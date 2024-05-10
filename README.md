@@ -1,6 +1,6 @@
 # 3b.CREATION FOR CHAT USING TCP SOCKETS
-## Name: Rishi M 
-## Register no: 212222230119
+## Name:MOHAMED ASEEM P
+## Register no: 212221230063
 ## AIM
 To write a python program for creating Chat using TCP Sockets Links.
 ## ALGORITHM:
