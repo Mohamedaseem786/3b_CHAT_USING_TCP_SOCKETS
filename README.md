@@ -1,14 +1,48 @@
-# 3b.CREATION FOR CHAT USING TCP SOCKETS
+# 2b IMPLEMENTATION OF SLIDING WINDOW PROTOCOL
 ## AIM
-To write a python program for creating Chat using TCP Sockets Links.
 ## ALGORITHM:
-1. Import the necessary modules in python
-2. Create a socket connection to using the socket module.
-3. Send message to the client and receive the message from the client using the Socket module in
- server
-4. Send and receive the message using the send function in socket.
+1. Start the program.
+2. Get the frame size from the user
+3. To create the frame based on the user request.
+4. To send frames to server from the client side.
+5. If your frames reach the server it will send ACK signal to client
+6. Stop the Program
 ## PROGRAM
-## OUPUT
+### Client:
+```
+import socket
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+size=int(input("Enter number of frames to send : "))
+l=list(range(size))
+s=int(input("Enter Window Size : "))
+st=0
+i=0
+while True:
+while(i<len(l)):
+st+=s
+c.send(str(l[i:st]).encode())
+ack=c.recv(1024).decode()
+if ack:
+print(ack)
+i+=s
+```
+### Server:
+```
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+while True:
+print(s.recv(1024).decode())
+s.send("acknowledgement recived from the server".encode())
+```
+## OUPUT:
+## Client:
+![image](https://github.com/Yuvan291205/2b_SLIDING_WINDOW_PROTOCOL/assets/138849170/40b2d07d-d5ca-4606-899a-376a1e1aee77)
+## Server:
+![image](https://github.com/Yuvan291205/2b_SLIDING_WINDOW_PROTOCOL/assets/138849170/32b33768-3405-438d-bc29-9f326e5d08ef)
+
 ## RESULT
-Thus, the python program for creating Chat using TCP Sockets Links was successfully 
-created and executed.
+Thus, python program to perform stop and wait protocol was successfully executed
